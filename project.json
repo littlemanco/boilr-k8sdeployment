@@ -1,9 +1,16 @@
 {
-  "TemplateName": "boilr-template",
-  "Authors": "Andrew Howden <hello[at]andrewhowden.com>",
-  "Year": "2016",
-  "GithubReference": "littlemanco/boilr-template",
-  "ProjectGoal": "",
-  "SimilarWork": "",
-  "Justification": ""
+  "Service": "Webserver",
+  "Application": "Nginx",
+  "Role": "Webserver",
+  "Namespace": "www-example-com",
+  "Replicas": 2,
+  "MaxSurge": 1,
+  "MaxUnavailable": 1,
+  "Image": "nginx",
+  "ImageVersion": "latest",
+  "ApplicationPort": 80,
+  "ApplicationPortProtocol": [
+     "TCP",
+     "UDP"
+  ]
 }
