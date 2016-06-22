@@ -59,11 +59,11 @@ spec:
             # Path to probe; akin to a status check. 
             path: /status.html
             port: 443
-            timeoutSeconds: {{ ApplicationHealthCheckPeriod }}
             httpHeaders:
               - name: Host
                 value: www.example.com # Todo: Fix this
               #- name: X-Custom-Header
               #  value: Awesome
+          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}
       restartPolicy: "Always"
       securityContext: {} 
