@@ -12,5 +12,7 @@
   "ApplicationPortProtocol": [
      "TCP",
      "UDP"
-  ]
+  ], 
+  "ApplicationBootTime": 5,
+  "ApplicationHealthCheckPeriod": 1
 }
