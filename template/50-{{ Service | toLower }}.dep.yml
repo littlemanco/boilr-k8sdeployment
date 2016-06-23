@@ -30,6 +30,9 @@ spec:
       #   name: "{{ Service }}-etc-conf-d"
       containers:
       - name: "{{ Application | toLower }}" # Todo: Update this
+        # env:
+        # - name: "FOO"
+        #   value: "BAR"
         image: "{{ Image }}:{{ ImageVersion }}" # Todo: Update this
         {{ if eq ImageVersion "latest" }}imagePullPolicy: "Always"{{ else }}imagePullPolicy: "IfNotPresent"{{ end }}
         # args:
