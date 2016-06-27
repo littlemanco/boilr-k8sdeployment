@@ -51,7 +51,7 @@ Installation
 
 .. Code:: bash
 
-  $ boilr template download boilr-k8sdeployment
+  $ boilr template download boilr-k8sdeployment k8sdeployment 
 
 Usage
 -----
