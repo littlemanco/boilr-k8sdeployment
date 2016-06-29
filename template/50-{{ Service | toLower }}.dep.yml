@@ -25,11 +25,14 @@ spec:
         role: "{{ Role | toLower }}"
     spec:
       # volumes:
-      # - name: "{{ Service }}-etc-conf-d"
+      # - name: "{{ Service | toLower }}-etc-conf-d"
       # configMap:
-      #   name: "{{ Service }}-etc-conf-d"
+      #   name: "{{ Service | toLower }}-etc-conf-d"
+      # - name: "{{ Service | toLower }}-data"
+      #   hostPath:
+      #     path: /data/{{ Service | toLower }}/
       containers:
-      - name: "{{ Application | toLower }}" # Todo: Update this
+      - name: "{{ Application | toLower }}"
         # env:
         # - name: "FOO"
         #   value: "BAR"
@@ -43,30 +46,34 @@ spec:
         - containerPort: {{ ApplicationPort }}
           protocol: {{ ApplicationPortProtocol }}
         # volumeMounts:
-        #   - name: "{{ Service | toLower }}-etc-conf-d"
-        #     mountPath: "/etc/{{ Service | toLower }}/conf.d"
+        # - name: "{{ Service | toLower }}-etc-conf-d"
+        #   mountPath: "/etc/{{ Service | toLower }}/conf.d"
+        # - name: "{{ Service | toLower }}-data
+        #   mountPath: "/data"
         livenessProbe:
-          httpGet:
+          {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; should be cheap, but representative of typical behavior
             path: /
-            port: 443
+            port: 80
             httpHeaders:
               - name: Host
                 value: www.example.com # Todo: Fix this
               #- name: X-Custom-Header
               #  value: Awesome
           initialDelaySeconds: {{ ApplicationBootTime }}
-          timeoutSeconds: 1
+          timeoutSeconds: 1{{ else if eq ProbeType "tcp"}}TCPSocketAction:
+            port: 9000{{ end }}
         readinessProbe:
-          httpGet:
+          {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; akin to a status check. 
             path: /status.html
-            port: 443
+            port: 80
             httpHeaders:
               - name: Host
                 value: www.example.com # Todo: Fix this
               #- name: X-Custom-Header
               #  value: Awesome
-          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}
+          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}TCPSocketAction:
+            port: 9000{{ end }}
       restartPolicy: "Always"
       securityContext: {} 
