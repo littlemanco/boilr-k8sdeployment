@@ -13,6 +13,10 @@
      "TCP",
      "UDP"
   ], 
+  "ProbeType": [
+    "tcp",
+    "http"
+  ],
   "ApplicationBootTime": 5,
   "ApplicationHealthCheckPeriod": 1
 }
