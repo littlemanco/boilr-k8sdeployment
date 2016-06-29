@@ -61,7 +61,7 @@ spec:
               #- name: X-Custom-Header
               #  value: Awesome
           initialDelaySeconds: {{ ApplicationBootTime }}
-          timeoutSeconds: 1{{ else if eq ProbeType "tcp"}}TCPSocketAction:
+          timeoutSeconds: 1{{ else if eq ProbeType "tcp"}}tcpSocket:
             port: 9000{{ end }}
         readinessProbe:
           {{ if eq ProbeType "http" }}httpGet:
@@ -73,7 +73,7 @@ spec:
                 value: www.example.com # Todo: Fix this
               #- name: X-Custom-Header
               #  value: Awesome
-          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}TCPSocketAction:
+          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}tcpSocket:
             port: 9000{{ end }}
       restartPolicy: "Always"
       securityContext: {} 
