@@ -61,8 +61,10 @@ spec:
               #- name: X-Custom-Header
               #  value: Awesome
           initialDelaySeconds: {{ ApplicationBootTime }}
-          timeoutSeconds: 1{{ else if eq ProbeType "tcp"}}tcpSocket:
-            port: 9000{{ end }}
+          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}tcpSocket:
+            port: 9000          
+          initialDelaySeconds: {{ ApplicationBootTime }}
+          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ end }}
         readinessProbe:
           {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; akin to a status check. 
@@ -73,7 +75,10 @@ spec:
                 value: www.example.com # Todo: Fix this
               #- name: X-Custom-Header
               #  value: Awesome
+          initialDelaySeconds: {{ ApplicationBootTime }}
           timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}tcpSocket:
-            port: 9000{{ end }}
+            port: 9000          
+          initialDelaySeconds: {{ ApplicationBootTime }}
+          timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ end }}
       restartPolicy: "Always"
       securityContext: {} 
