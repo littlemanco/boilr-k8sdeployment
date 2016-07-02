@@ -54,7 +54,7 @@ spec:
         livenessProbe:
           {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; should be cheap, but representative of typical behavior
-            path: /
+            path: "/healthz"
             port: 80
             httpHeaders:
               - name: "Host"
@@ -69,7 +69,7 @@ spec:
         readinessProbe:
           {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; akin to a status check. 
-            path: "/status.html"
+            path: "/healthz"
             port: 80
             httpHeaders:
               - name: "Host"
