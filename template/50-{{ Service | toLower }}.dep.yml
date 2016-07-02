@@ -48,8 +48,10 @@ spec:
           protocol: "{{ ApplicationPortProtocol }}"
         # volumeMounts:
         # - name: "{{ Service | toLower }}-etc-conf-d"
+        #   readOnly: true
         #   mountPath: "/etc/{{ Service | toLower }}/conf.d"
         # - name: "{{ Service | toLower }}-data
+        #   readOnly: false
         #   mountPath: "/data"
         livenessProbe:
           {{ if eq ProbeType "http" }}httpGet:
