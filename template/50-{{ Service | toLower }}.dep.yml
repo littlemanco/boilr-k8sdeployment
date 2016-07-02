@@ -45,7 +45,7 @@ spec:
         #   - "arguments"
         ports:
         - containerPort: {{ ApplicationPort }}
-          protocol: {{ ApplicationPortProtocol }}
+          protocol: "{{ ApplicationPortProtocol }}"
         # volumeMounts:
         # - name: "{{ Service | toLower }}-etc-conf-d"
         #   mountPath: "/etc/{{ Service | toLower }}/conf.d"
@@ -57,28 +57,28 @@ spec:
             path: /
             port: 80
             httpHeaders:
-              - name: Host
-                value: www.example.com # Todo: Fix this
-              #- name: X-Custom-Header
-              #  value: Awesome
+              - name: "Host"
+                value: "www.example.com" # Todo: Fix this
+              #- name: "X-Custom-Header"
+              #  value: "Awesome"
           initialDelaySeconds: {{ ApplicationBootTime }}
           timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}tcpSocket:
-            port: 9000          
+            port: {{ ApplicationPort }}          
           initialDelaySeconds: {{ ApplicationBootTime }}
           timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ end }}
         readinessProbe:
           {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; akin to a status check. 
-            path: /status.html
+            path: "/status.html"
             port: 80
             httpHeaders:
-              - name: Host
-                value: www.example.com # Todo: Fix this
-              #- name: X-Custom-Header
-              #  value: Awesome
+              - name: "Host"
+                value: "www.example.com" # Todo: Fix this
+              #- name: "X-Custom-Header"
+              #  value: "Awesome"
           initialDelaySeconds: {{ ApplicationBootTime }}
           timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}tcpSocket:
-            port: 9000          
+            port: {{ ApplicationPort }}
           initialDelaySeconds: {{ ApplicationBootTime }}
           timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ end }}
       restartPolicy: "Always"
