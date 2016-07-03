@@ -58,7 +58,7 @@ spec:
           {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; should be cheap, but representative of typical behavior
             path: "/healthz"
-            port: 80
+            port: {{ ApplicationPort }}
             httpHeaders:
               - name: "Host"
                 value: "www.example.com" # Todo: Fix this
@@ -73,7 +73,7 @@ spec:
           {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; akin to a status check. 
             path: "/healthz"
-            port: 80
+            port: {{ ApplicationPort }}
             httpHeaders:
               - name: "Host"
                 value: "www.example.com" # Todo: Fix this
