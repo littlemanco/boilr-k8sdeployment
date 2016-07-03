@@ -64,11 +64,20 @@ Swap `foo` and `bar` for your own values.
   $ cd foo
   $ git init
   $ git remote set-url origin git@github.com:foo/bar.git
-  $ boilr template use k8sdeployment
+  $ boilr template use k8sdeployment .
   $ git add .
   $ git commit -m "Initial Commit"
   $ git push
 
+Updates
+-------
+
+I update these templates regularly. If you need to fetch the newer version, try this:
+
+.. Code:: bash
+
+  $ boilr template download littlemanco/boilr-k8sdeployment k8sdeployment -f 
+  
 Thanks
 ------
 
