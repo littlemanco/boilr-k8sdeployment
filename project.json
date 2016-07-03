@@ -13,6 +13,7 @@
      "TCP",
      "UDP"
   ], 
+  "ApplicationPortName": "http",
   "ProbeType": [
     "tcp",
     "http"
