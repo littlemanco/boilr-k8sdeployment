@@ -46,6 +46,7 @@ spec:
         ports:
         - containerPort: {{ ApplicationPort }}
           protocol: "{{ ApplicationPortProtocol }}"
+          name: "{{ ApplicationPortName }}"
         # volumeMounts:
         # - name: "{{ Service | toLower }}-etc-conf-d"
         #   readOnly: true
