@@ -6,7 +6,7 @@ metadata:
   labels:
     application: "{{ Application | toLower }}"
     role: "{{ Role | toLower }}"
-  name: "{{ Application | toLower }}-deployment"
+  name: "{{ Service | toLower }}"
   namespace: "{{ Namespace }}"
 spec:
   replicas: {{ Replicas }}
