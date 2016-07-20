@@ -43,6 +43,13 @@ spec:
         #   - "command"
         #   - "line" 
         #   - "arguments"
+        resources:
+          limits:
+            cpu: "{{ CpuLimit }}"
+            memory: {{ MemoryLimit}}Mi
+          requests:
+            cpu: "{{ CpuRequest }}"
+            memory: {{ MemoryRequest }}Mi
         ports:
         - containerPort: {{ ApplicationPort }}
           protocol: "{{ ApplicationPortProtocol }}"
