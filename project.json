@@ -11,7 +11,7 @@
   "CpuLimit": "1",
   "MemoryLimit": "512",
   "CpuRequest": "1",
-  "MemoryLimit": "512",
+  "MemoryRequest": "512",
   "ApplicationPort": 80,
   "ApplicationPortProtocol": [
      "TCP",
