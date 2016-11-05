@@ -8,6 +8,10 @@
   "MaxUnavailable": 1,
   "Image": "nginx",
   "ImageVersion": "latest",
+  "Privileged": [
+    "true",
+    "false"
+  ],
   "CpuLimit": "100m",
   "MemoryLimit": "512Mi",
   "CpuRequest": "100m",
