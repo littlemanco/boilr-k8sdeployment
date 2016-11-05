@@ -80,7 +80,7 @@ spec:
           {{ if eq ProbeType "http" }}httpGet:
             # Path to probe; akin to a status check. 
             path: "/healthz"
-            port: {{ ApplicationPort }}
+            port: {{ ApplicationPortName }}
             httpHeaders:
               - name: "Host"
                 value: "www.example.com" # Todo: Fix this
@@ -88,7 +88,7 @@ spec:
               #  value: "Awesome"
           initialDelaySeconds: {{ ApplicationBootTime }}
           timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ else if eq ProbeType "tcp"}}tcpSocket:
-            port: {{ ApplicationPort }}
+            port: {{ ApplicationPortName }}
           initialDelaySeconds: {{ ApplicationBootTime }}
           timeoutSeconds: {{ ApplicationHealthCheckPeriod }}{{ end }}
       restartPolicy: "Always"
