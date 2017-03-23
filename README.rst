@@ -2,6 +2,12 @@
 k8sdeployment
 ====================
 
+Warning
+-------
+
+***THIS PROJECT IS ABANDONED***. It has been superseded by sitewards/helm-chart. Please note, it may not work as
+anticipated, and new issues will not be resolved.
+
 Project Outline
 ----------------
 
